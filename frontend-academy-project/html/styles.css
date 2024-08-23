@@ -1,0 +1,159 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8c3cb; 
+}
+
+header {
+    background-color: #333;
+    padding: 1rem;
+    color: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+
+.container {
+    width: 35%;
+    padding: 1rem;
+    background-color: #f7f7f7;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin-top: 5rem; 
+}
+
+
+.header-title h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-box {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.input-box label {
+    display: block;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.input-box input:hover {
+    border-color: #a9a9a9;
+}
+
+.input-box input:focus-visible {
+    border-color: #e6006f;
+    outline: none;
+}
+
+.cotinue-button button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #ff007f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.cotinue-button button:hover {
+    background-color: #e6006f;
+}
+
+.message, .error {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #b3005e;
+    margin-top: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .header-title h1 {
+        font-size: 1.2rem;
+    }
+
+    .input-box input {
+        font-size: 0.9rem;
+    }
+
+    .cotinue-button button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title h1 {
+        font-size: 1rem;
+    }
+
+    .input-box input {
+        font-size: 0.8rem;
+    }
+
+    .cotinue-button button {
+        font-size: 0.8rem;
+    }
+}
