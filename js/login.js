@@ -19,4 +19,3 @@ const showErrors = (error) => {
     document.querySelector(".error").textContent = error;
 };
 
-document.querySelector(".envia-btn").addEventListener("click", login);

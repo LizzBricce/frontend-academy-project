@@ -4,41 +4,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste liz</title>
-    <script src="../js/characteristicsForm.js" type="module" defer></script>
-    <script src="../js/training.js" type="module" defer></script>
+    <title>Zezinho</title>
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        h1 {
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+
+        .button-submit {
+            display: block;
+            width: 120px;
+            padding: 0.5rem;
+            margin: 0.5rem auto;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            background-color: #ff007f;
+        }
+
+        .button-submit:hover {
+            background-color: #e6006f;
+        }
+
+        .form-container {
+            height: 10vh;
+            padding: 1rem;
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .message,
+        .error {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #b3005e;
+            margin-top: 0.5rem;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Salve</h1>
-    <button class="button-submit">Clique</button>
-    <button class="btn-enviar">Clique</button>
-    <p id="resultMessage"></p>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">
+                        <img class="logo" src="images/peso.png" alt="peso icon">
+                    </a></li>
+                <li><a href="userForm.html">Criar Conta</a></li>
+                <li><a href="/html/login.html">Login</a></li>
+                <li><a href="/html/characteristics.html">Adicionar Características</a></li>
+                <li><a href="/html/userList.html">Listar Usuários</a></li>
+                <li><a href="/html/userProfile.html">User Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form">
+            <h1>Características</h1>
+            <p id="resultMessage"></p>
+
+            <form id="characteristicsForm" action="/submit_form" method="post">
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="weight">Peso:</label>
+                        <input type="number" id="weight" name="weight" step="0.01" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="height">Altura:</label>
+                        <input type="number" id="height" name="height" step="0.01" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="gender">Gênero:</label>
+                        <select id="gender" name="gender">
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                            <option value="OUTRO">Outro</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <label for="age">Idade:</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="physicalGoal">Objetivo Físico:</label>
+                        <select id="physicalGoal" name="physicalGoal">
+                            <option value="PERDER_PESO">Perder Peso</option>
+                            <option value="GANHAR_MUSCULO">Ganhar Músculo</option>
+                            <option value="MANUTENCAO">Manutenção</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="button-submit" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/characteristicsForm.js" defer></script>
 </body>
 
-</html><form>
-    <label for="weight">Weight:</label>
-    <input type="number" id="weight" step="0.01" required>
-
-    <label for="height">Height:</label>
-    <input type="number" id="height" step="0.01" required>
-
-    <label for="gender">Gender:</label>
-    <select id="gender">
-        <option value="M">Male</option>
-        <option value="F">Female</option>
-        <option value="OUTRO">Other</option>
-    </select>
-
-    <label for="age">Age:</label>
-    <input type="number" id="age" required>
-
-    <label for="physicalGoal">Physical Goal:</label>
-    <select id="physicalGoal">
-        <option value="PERDER_PESO">Lose Weight</option>
-        <option value="GANHAR_MUSCULO">Gain Muscle</option>
-        <option value="MANUTENCAO">Maintenance</option>
-    </select>
-
-    <button class="button-submit" type="submit">Submit</button>
-</form>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil do Usuário</title>
+    <link href="images/favicon.png" rel="icon" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .container {
+            width: 70%;
+            margin-top: 21vh;
+            
+            padding: 2rem 2rem 0 1rem;
+            
+        }
+
+
+        .profile-section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon-container {
+            margin-right: 2rem;
+        }
+
+        .icon-user {
+            border-radius: 50%;
+            height: 100px;
+            width: auto;
+        }
+
+
+        .user-details {
+            flex-grow: 1;
+        }
+
+        .name-settings-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .img-settings {
+            height: 30px;
+            width: auto;
+            cursor: pointer;
+        }
+
+
+        .user-characteristics,
+        #no-physical-characteristics {
+            margin-top: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        .training-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .buttons-section {
+            margin-top: 1rem;
+        }
+
+        #not-logged-in {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">
+                        <img class="logo" src="images/peso.png" alt="peso icon">
+                    </a></li>
+                <li><a href="/html/userForm.html">Criar Conta</a></li>
+                <li><a href="/html/login.html">Login</a></li>
+                <li><a href="/html/characteristics.html">Adicionar Características</a></li>
+                <li><a href="/html/userList.html">Listar Usuários</a></li>
+                <li><a href="/user_profile">Perfil do Usuário</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="profile-info" class="profile-section">
+            <div class="profile-info">
+                <div class="icon-container">
+                    <img id="user-icon" class="icon-user" src="images/MASCULINO.png" alt="Ícone do Usuário" />
+                </div>
+
+                <div class="user-details">
+                    <div class="name-settings-container">
+                        <h2 class="user-title" id="user-name"></h2>
+                        <img class="img-settings" src="images/settings.png" alt="Settings Icon">
+                    </div>
+                    <p>Email: <span id="user-email"></span></p>
+                    <hr>
+                    <div id="user-characteristics" class="user-characteristics hidden">
+                        <p><span class="label">Peso:</span> <span id="user-weight"></span></p>
+                        <p><span class="label">Altura:</span> <span id="user-height"></span></p>
+                        <p><span class="label">Gênero:</span> <span id="user-gender"></span></p>
+                        <p><span class="label">Idade:</span> <span id="user-age"></span></p>
+                        <p><span class="label">Meta:</span> <span id="user-physical-goal"></span></p>
+                    </div>
+                    <div id="no-physical-characteristics" class="hidden">
+                        <p>Sem características físicas setadas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="training-section" class="training-section">
+
+            <div id="training-info" class="hidden">
+                <h2>Treino</h2>
+                <p>Descrição: <span id="training-description"></span></p>
+            </div>
+
+            <div id="no-training" class="hidden">
+                <p>Sem treinos gerados.</p>
+            </div>
+
+            <div class="buttons-section">
+                <form action="/generate_training" method="get">
+                    <div class="cotinue-button">
+                    <button type="submit">Enviar</button>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="not-logged-in" class="profile-section hidden">
+            <p>Você não está logado!</p>
+            <p><a href="login.html">Faça o Login aqui</a></p>
+        </div>
+    </div>
+
+    <script src="/js/userProfile.js"></script>
+</body>
+
+</html>
