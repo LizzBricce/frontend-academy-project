@@ -1,4 +1,4 @@
-import { getData } from "./utils.js";
+import { getData } from "./js/utils.js";
 
 document.querySelector('.button-submit').addEventListener('click', async (event) => {
     event.preventDefault();
@@ -22,10 +22,23 @@ document.querySelector('.button-submit').addEventListener('click', async (event)
         const data = await getData('/characteristics/add', 'POST', user);
         const updatedUser = await getData(`/user/profile/${user.id}`, 'GET');
         
-        localStorage.setItem("user", JSON.stringify(updatedUser));        
-        document.getElementById('resultMessage').textContent = `Characteristics created: ${data}`;
-
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+        
+        showMessage(`Characteristics created: ${data}`);
     } catch (error) {
-        document.getElementById('resultMessage').textContent = `Error: ${error.message}`;
+        showError(`Error: ${error.message}`);
     }
 });
+
+const showMessage = (message) => {
+    const messageDiv = document.querySelector('.message');
+    messageDiv.textContent = message;
+    messageDiv.classList.remove('hidden');
+};
+
+const showError = (error) => {
+    const errorDiv = document.querySelector('.error');
+    errorDiv.textContent = error;
+    errorDiv.classList.remove('hidden');
+};
+

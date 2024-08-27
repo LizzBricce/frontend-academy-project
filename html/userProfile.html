@@ -16,9 +16,9 @@
         .container {
             width: 70%;
             margin-top: 21vh;
-            
+
             padding: 2rem 2rem 0 1rem;
-            
+
         }
 
 
@@ -106,7 +106,7 @@
                 <li><a href="/html/login.html">Login</a></li>
                 <li><a href="/html/characteristics.html">Adicionar Características</a></li>
                 <li><a href="/html/userList.html">Listar Usuários</a></li>
-                <li><a href="/user_profile">Perfil do Usuário</a></li>
+                <li><a href="/html/userProfile.html">Perfil do Usuário</a></li>
             </ul>
         </nav>
     </header>
@@ -153,19 +153,23 @@
             <div class="buttons-section">
                 <form action="/generate_training" method="get">
                     <div class="cotinue-button">
-                    <button type="submit">Enviar</button>
-                </div>
+                        <button type="submit">Enviar</button>
+                    </div>
                 </form>
             </div>
         </div>
 
         <div id="not-logged-in" class="profile-section hidden">
-            <p>Você não está logado!</p>
+            
             <p><a href="login.html">Faça o Login aqui</a></p>
         </div>
+        <div class="message hidden"></div>
+        <div class="error hidden"></div>
+
     </div>
 
     <script src="/js/userProfile.js"></script>
+    <script src="../js/utils.js" type="module"defer></script>
 </body>
 
 </html>

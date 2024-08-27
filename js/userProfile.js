@@ -1,13 +1,22 @@
 async function fetchUserData() {
+    const errorDiv = document.querySelector('.error');
+    const messageDiv = document.querySelector('.message');
+    
     try {
         const response = await fetch('/api/user');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
+        messageDiv.textContent = 'Dados do usuário carregados com sucesso!';
+        messageDiv.classList.remove('hidden');
+        errorDiv.classList.add('hidden');
         return data;
     } catch (error) {
         console.error('Fetch error:', error);
+        errorDiv.textContent = `Error: ${error.message}`;
+        errorDiv.classList.remove('hidden');
+        messageDiv.classList.add('hidden');
         return null;
     }
 }
@@ -24,7 +33,6 @@ function updateProfile(user) {
     const trainingSection = document.getElementById('training-section');
 
     if (user) {
-
         if (profileInfo) {
             profileInfo.classList.remove('hidden');
         }
@@ -86,19 +94,31 @@ function updateProfile(user) {
             }
         }
 
-        
+        const errorDiv = document.querySelector('.error');
+        const messageDiv = document.querySelector('.message');
+
+        messageDiv.textContent = 'Perfil atualizado com sucesso!';
+        messageDiv.classList.remove('hidden');
+        errorDiv.classList.add('hidden');
+
         if (notLoggedIn) {
             notLoggedIn.classList.add('hidden');
         }
     } else {
-        
+        const errorDiv = document.querySelector('.error');
+        const messageDiv = document.querySelector('.message');
+
+        messageDiv.textContent = '';
+        errorDiv.textContent = 'Usuário não está logado.';
+        errorDiv.classList.remove('hidden');
+        messageDiv.classList.add('hidden');
+
         if (profileInfo) {
             profileInfo.classList.add('hidden');
         }
         if (trainingSection) {
             trainingSection.classList.add('hidden');
         }
-        
         if (notLoggedIn) {
             notLoggedIn.classList.remove('hidden');
         }

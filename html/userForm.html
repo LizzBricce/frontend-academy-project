@@ -35,7 +35,7 @@
                 <h1 class="poppins-bold">Crie uma conta nova</h1>
             </div>
 
-            <form action="/add_user" method="post">
+            <form action="/user/add" method="post">
                 <div class="input-box">
                     <label for="name">Nome:</label>
                     <input type="text" id="name" name="name" required>
@@ -60,6 +60,7 @@
         </div>
     </div>
 
-    <script src="../js/userForm.js"></script>
+    <script src="../js/userForm.js" type="module" defer></script>
+    <script src="../js/utils.js" type="module" defer></script>
 </body>
 </html>

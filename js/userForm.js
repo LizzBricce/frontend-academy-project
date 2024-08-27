@@ -1,4 +1,4 @@
-import { getData } from "../utils.js";
+import { getData } from "./js/utils.js";
 
 const renderUserList = (userList) => {
     const userListDiv = document.getElementById('userList');
@@ -21,12 +21,27 @@ document.querySelector('.button-submit').addEventListener('click', async (event)
 
     try {
         const data = await getData('/user/add', 'POST', user);
-        document.getElementById('resultMessage').innerText = `User created: ${data}`;
+        
+        
+        showMessage(`User created: ${data}`);
 
-        // Atualizar a lista de usuários
+        
         const userList = await getData('/user/list', 'GET');
         renderUserList(userList);
     } catch (error) {
-        document.getElementById('resultMessage').innerText = `Error: ${error.message}`;
+        
+        showError(`Error: ${error.message}`);
     }
 });
+
+const showMessage = (message) => {
+    const messageDiv = document.querySelector('.message');
+    messageDiv.textContent = message;
+    messageDiv.classList.remove('hidden');
+};
+
+const showError = (error) => {
+    const errorDiv = document.querySelector('.error');
+    errorDiv.textContent = error;
+    errorDiv.classList.remove('hidden');
+};

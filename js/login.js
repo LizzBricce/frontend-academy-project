@@ -1,4 +1,4 @@
-import { getData } from "./utils.js";
+import { getData } from "./js/utils.js";
 
 const login = async () => {
     const email = document.querySelector("#email").value;
@@ -15,7 +15,16 @@ const login = async () => {
     }
 };
 
+
 const showErrors = (error) => {
-    document.querySelector(".error").textContent = error;
+    const errorDiv = document.querySelector(".error");
+    errorDiv.textContent = error;
+    errorDiv.classList.remove("hidden");
+};
+
+const showMessage = (message) => {
+    const messageDiv = document.querySelector(".message");
+    messageDiv.textContent = message;
+    messageDiv.classList.remove("hidden");
 };
 
