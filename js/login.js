@@ -1,4 +1,4 @@
-import { getData } from "./js/utils.js";
+import { getData } from "./utils.js";
 
 const login = async () => {
     const email = document.querySelector("#email").value;
@@ -11,9 +11,12 @@ const login = async () => {
         showErrors(data.errorMessage);
     } else {
         localStorage.setItem("user", JSON.stringify(data));
-        // window.location.href = "./user-profile.html";
+        window.location.href = "./userProfile.html";
     }
 };
+
+
+document.querySelector(".btn-envia").addEventListener("click", login)
 
 
 const showErrors = (error) => {

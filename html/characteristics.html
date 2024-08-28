@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zezinho</title>
     <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -87,11 +87,11 @@
                 <li><a href="/">
                         <img class="logo" src="images/peso.png" alt="peso icon">
                     </a></li>
-                <li><a href="userForm.html">Criar Conta</a></li>
-                <li><a href="/html/login.html">Login</a></li>
-                <li><a href="/html/characteristics.html">Adicionar Características</a></li>
-                <li><a href="/html/userList.html">Listar Usuários</a></li>
-                <li><a href="/html/userProfile.html">User Profile</a></li>
+                <li><a href="./userForm.html">Criar Conta</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./characteristics.html">Adicionar Características</a></li>
+                <li><a href="./userList.html">Listar Usuários</a></li>
+                <li><a href="./userProfile.html">User Profile</a></li>
             </ul>
         </nav>
     </header>
@@ -101,7 +101,7 @@
             <h1>Características</h1>
             <p id="resultMessage"></p>
 
-            <form id="characteristicsForm" action="/submit_form" method="post">
+            <form id="characteristicsForm">
                 <div class="input-group">
                     <div class="input-box">
                         <label for="weight">Peso:</label>
@@ -132,15 +132,14 @@
                         </select>
                     </div>
                 </div>
-                <button class="button-submit" type="submit">Enviar</button>
+                <button class="button-submit" type="button">Enviar</button>
             </form>
             <div class="message hidden"></div>
             <div class="error hidden"></div>
 
         </div>
     </div>
-    <script src="../js/utils.js" defer></script>
-    <script src="../js/characteristicsForm.js" defer></script>
+    <script src="../js/characteristicsForm.js" type="module" defer></script>
 </body>
 
 </html>

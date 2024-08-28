@@ -1,4 +1,4 @@
-import { getData } from "./js/utils.js";
+import { getData } from "./utils.js";
 
 document.querySelector('.button-submit').addEventListener('click', async (event) => {
     event.preventDefault();
@@ -19,7 +19,7 @@ document.querySelector('.button-submit').addEventListener('click', async (event)
     };
 
     try {
-        const data = await getData('/characteristics/add', 'POST', user);
+        const data = await getData('/physicalProfile/add', 'POST', user);
         const updatedUser = await getData(`/user/profile/${user.id}`, 'GET');
         
         localStorage.setItem("user", JSON.stringify(updatedUser));

@@ -1,4 +1,4 @@
-import { getData } from "./js/utils.js";
+import { getData } from "./utils.js";
 
 const renderUserList = (userList) => {
     const userListDiv = document.getElementById('userList');
@@ -7,7 +7,7 @@ const renderUserList = (userList) => {
         : '<ul>' + userList.map(({ name, email }) => `<li>${name} - ${email}</li>`).join('') + '</ul>';
 };
 
-document.querySelector('.button-submit').addEventListener('click', async (event) => {
+document.querySelector('.btn-submit').addEventListener('click', async (event) => {
     event.preventDefault();
 
     const user = {
@@ -21,15 +21,14 @@ document.querySelector('.button-submit').addEventListener('click', async (event)
 
     try {
         const data = await getData('/user/add', 'POST', user);
-        
-        
+
         showMessage(`User created: ${data}`);
 
-        
+
         const userList = await getData('/user/list', 'GET');
         renderUserList(userList);
     } catch (error) {
-        
+
         showError(`Error: ${error.message}`);
     }
 });

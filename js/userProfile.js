@@ -1,13 +1,14 @@
+import { getData } from "./utils.js";
+
 async function fetchUserData() {
     const errorDiv = document.querySelector('.error');
     const messageDiv = document.querySelector('.message');
+
+    const user = JSON.parse(localStorage.getItem("user"))
     
     try {
-        const response = await fetch('/api/user');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
+        const data = await getData(`/user/profile/${user.id}`, 'GET');
+        
         messageDiv.textContent = 'Dados do usuário carregados com sucesso!';
         messageDiv.classList.remove('hidden');
         errorDiv.classList.add('hidden');
@@ -49,7 +50,7 @@ function updateProfile(user) {
 
         const userCharacteristics = document.getElementById('user-characteristics');
         const noPhysicalCharacteristics = document.getElementById('no-physical-characteristics');
-        if (user.characteristics) {
+        if (user.physicalProfile) {
             if (userCharacteristics) {
                 userCharacteristics.classList.remove('hidden');
             }
@@ -57,12 +58,12 @@ function updateProfile(user) {
                 noPhysicalCharacteristics.classList.add('hidden');
             }
 
-            setUserIcon(user.characteristics.gender);
-            document.getElementById('user-weight').textContent = user.characteristics.weight;
-            document.getElementById('user-height').textContent = user.characteristics.height;
-            document.getElementById('user-gender').textContent = user.characteristics.gender;
-            document.getElementById('user-age').textContent = user.characteristics.age;
-            document.getElementById('user-physical-goal').textContent = user.characteristics.physicalGoal;
+            setUserIcon(user.physicalProfile.gender);
+            document.getElementById('user-weight').textContent = user.physicalProfile.weight;
+            document.getElementById('user-height').textContent = user.physicalProfile.height;
+            document.getElementById('user-gender').textContent = user.physicalProfile.gender;
+            document.getElementById('user-age').textContent = user.physicalProfile.age;
+            document.getElementById('user-physical-goal').textContent = user.physicalProfile.physicalGoal;
         } else {
             if (userCharacteristics) {
                 userCharacteristics.classList.add('hidden');
@@ -83,7 +84,7 @@ function updateProfile(user) {
             }
             const trainingDescription = document.getElementById('training-description');
             if (trainingDescription) {
-                trainingDescription.textContent = user.training.description;
+                trainingDescription.textContent = user.training.fullTraining;
             }
         } else {
             if (trainingInfo) {
@@ -127,6 +128,7 @@ function updateProfile(user) {
 
 async function init() {
     const user = await fetchUserData();
+    console.log(user);
     updateProfile(user);
 }
 

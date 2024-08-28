@@ -1,4 +1,4 @@
-import { getData } from "./js/utils.js";
+import { getData } from "./utils.js";
 
 document.querySelector(".btn-enviar").addEventListener("click", async () => {
     const user = JSON.parse(localStorage.getItem("user"));
