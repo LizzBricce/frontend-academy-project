@@ -16,7 +16,7 @@ const login = async () => {
 };
 
 
-document.querySelector(".btn-envia").addEventListener("click", login)
+
 
 
 const showErrors = (error) => {
@@ -30,4 +30,4 @@ const showMessage = (message) => {
     messageDiv.textContent = message;
     messageDiv.classList.remove("hidden");
 };
-
+export {login}

@@ -1,7 +1,8 @@
 import { getData } from "./utils.js";
+import {updateProfile, fetchUserData} from "./userProfile.js";
 
 document.querySelector(".btn-enviar").addEventListener("click", async () => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("user"));
 
     try {
         const data = await getData("/api/generate_training", "POST", user);
@@ -10,7 +11,10 @@ document.querySelector(".btn-enviar").addEventListener("click", async () => {
         localStorage.setItem("user", JSON.stringify(updatedUser));
 
         
-        showMessage(`Treino gerado com sucesso: ${JSON.stringify(data)}`);
+        showMessage(`Treino gerado com sucesso`);
+        user = await fetchUserData();
+        
+        updateProfile(user);
     } catch (error) {
         
         showError(`Erro ao gerar treino: ${error.message}`);

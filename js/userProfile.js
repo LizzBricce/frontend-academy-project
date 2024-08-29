@@ -59,11 +59,11 @@ function updateProfile(user) {
             }
 
             setUserIcon(user.physicalProfile.gender);
-            document.getElementById('user-weight').textContent = user.physicalProfile.weight;
-            document.getElementById('user-height').textContent = user.physicalProfile.height;
+            document.getElementById('user-weight').textContent = user.physicalProfile.bodyWeight;
+            document.getElementById('user-height').textContent = user.physicalProfile.bodyHeight;
             document.getElementById('user-gender').textContent = user.physicalProfile.gender;
             document.getElementById('user-age').textContent = user.physicalProfile.age;
-            document.getElementById('user-physical-goal').textContent = user.physicalProfile.physicalGoal;
+            document.getElementById('user-physical-goal').textContent = user.physicalProfile.fitnessGoal;
         } else {
             if (userCharacteristics) {
                 userCharacteristics.classList.add('hidden');
@@ -84,8 +84,10 @@ function updateProfile(user) {
             }
             const trainingDescription = document.getElementById('training-description');
             if (trainingDescription) {
-                trainingDescription.textContent = user.training.fullTraining;
+                // trainingDescription.textContent = user.training.fullTraining;
+                trainingDescription.innerHTML =`<pre> ${user.training.fullTraining} </pre> `
             }
+
         } else {
             if (trainingInfo) {
                 trainingInfo.classList.add('hidden');
@@ -131,5 +133,5 @@ async function init() {
     console.log(user);
     updateProfile(user);
 }
-
+export {updateProfile, fetchUserData}
 init();

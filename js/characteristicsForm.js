@@ -5,17 +5,17 @@ document.querySelector('.button-submit').addEventListener('click', async (event)
 
     const userInfos = JSON.parse(localStorage.getItem('user'));
 
-    const characteristics = {
-        weight: parseFloat(document.querySelector('#weight').value),
-        height: parseFloat(document.querySelector('#height').value),
+    const physicalProfile = {
+        bodyWeight: parseFloat(document.querySelector('#weight').value),
+        bodyHeight: parseFloat(document.querySelector('#height').value),
         gender: document.querySelector('#gender').value,
         age: parseInt(document.querySelector('#age').value, 10),
-        physicalGoal: document.querySelector('#physicalGoal').value
+        fitnessGoal: document.querySelector('#physicalGoal').value
     };
 
     const user = {
         ...userInfos,
-        characteristics
+        physicalProfile
     };
 
     try {
@@ -24,7 +24,7 @@ document.querySelector('.button-submit').addEventListener('click', async (event)
         
         localStorage.setItem("user", JSON.stringify(updatedUser));
         
-        showMessage(`Characteristics created: ${data}`);
+        showMessage(`Characteristics created.`);
     } catch (error) {
         showError(`Error: ${error.message}`);
     }

@@ -1,4 +1,5 @@
 import { getData } from "./utils.js";
+import {login} from "./login.js";
 
 const renderUserList = (userList) => {
     const userListDiv = document.getElementById('userList');
@@ -20,13 +21,18 @@ document.querySelector('.btn-submit').addEventListener('click', async (event) =>
     };
 
     try {
-        const data = await getData('/user/add', 'POST', user);
+        let data = await getData('/user/add', 'POST', user);
 
-        showMessage(`User created: ${data}`);
+        showMessage(`User created.`);
+        const body = { email: user.email, password: user.password };
+        data = await getData("/login", 'POST', body);
 
+        if (!data.errorMessage) {
+            localStorage.setItem("user", JSON.stringify(data));
+        }
 
-        const userList = await getData('/user/list', 'GET');
-        renderUserList(userList);
+        // const userList = await getData('/user/list', 'GET');
+        // renderUserList(userList);
     } catch (error) {
 
         showError(`Error: ${error.message}`);
