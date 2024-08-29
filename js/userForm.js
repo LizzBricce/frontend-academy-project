@@ -2,9 +2,13 @@ import { getData } from "./utils.js";
 
 const renderUserList = (userList) => {
     const userListDiv = document.getElementById('userList');
-    userListDiv.innerHTML = userList.length === 0
-        ? '<p>No users found.</p>'
-        : '<ul>' + userList.map(({ name, email }) => `<li>${name} - ${email}</li>`).join('') + '</ul>';
+		
+		if(userListDiv !== null){
+	    userListDiv.innerHTML = userList.length === 0
+  	      ? '<p>No users found.</p>'
+    	    : '<ul>' + userList.map(({ name, email }) => `<li>${name} - ${email}</li>`).join('') + '</ul>';
+		}else
+			console.log(`Element not found`);
 };
 
 document.querySelector('.btn-submit').addEventListener('click', async (event) => {
