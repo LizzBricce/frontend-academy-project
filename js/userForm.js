@@ -1,5 +1,5 @@
 import { getData } from "./utils.js";
-import {login} from "./login.js";
+// import {login} from "./login.js";
 
 const renderUserList = (userList) => {
     const userListDiv = document.getElementById('userList');
@@ -21,9 +21,9 @@ document.querySelector('.btn-submit').addEventListener('click', async (event) =>
     };
 
     try {
-        let data = await getData('/user/add', 'POST', user);
+        const data = await getData('/user/add', 'POST', user);
 
-        showMessage(`User created.`);
+        showMessage(`User criado`);
         // const body = { email: user.email, password: user.password };
         // data = await getData("/login", 'POST', body);
 
@@ -35,7 +35,7 @@ document.querySelector('.btn-submit').addEventListener('click', async (event) =>
         // renderUserList(userList);
     } catch (error) {
 
-        showError(`Error: ${error.message}`);
+        showError(`Error`);
     }
 });
 
