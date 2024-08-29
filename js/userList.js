@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     try {
                         const data = await getData(`/delete/${user.id}`, 'POST');
 
-                        // TODO: remove from localStorage
+                       
                         // localStorage.setItem("user", JSON.stringify(updatedUser));
 
                         // showMessage(Characteristics created: ${data});
@@ -68,13 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td>${id}</td>
                     <td>${name}</td>
                     <td>${email}</td>
-                    <td>
-                   
-                            <input type="hidden" name="id" value="${id}"/>
-                            <button type="submit" name="action" value="delete_user">Delete</button>
-
-                        
-                    </td>
+                    
                 `;
             // <form action="/delete" method="post">
             // <button type="submit" name="action" value="edit_user">Edit</button>
