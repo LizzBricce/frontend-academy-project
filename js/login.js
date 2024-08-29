@@ -16,7 +16,7 @@ const login = async () => {
 };
 
 
-
+document.querySelector(".btn-envia").addEventListener("click", login)
 
 
 const showErrors = (error) => {

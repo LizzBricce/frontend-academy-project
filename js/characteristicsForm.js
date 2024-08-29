@@ -24,7 +24,7 @@ document.querySelector('.button-submit').addEventListener('click', async (event)
         
         localStorage.setItem("user", JSON.stringify(updatedUser));
         
-        showMessage(`Characteristics created.`);
+        showMessage(`Perfil físico criado.`);
     } catch (error) {
         showError(`Error: ${error.message}`);
     }

@@ -5,10 +5,10 @@ async function fetchUserData() {
     const messageDiv = document.querySelector('.message');
 
     const user = JSON.parse(localStorage.getItem("user"))
-    
+
     try {
         const data = await getData(`/user/profile/${user.id}`, 'GET');
-        
+
         messageDiv.textContent = 'Dados do usuário carregados com sucesso!';
         messageDiv.classList.remove('hidden');
         errorDiv.classList.add('hidden');
@@ -21,10 +21,14 @@ async function fetchUserData() {
         return null;
     }
 }
-
+function formatFitnessGoal(goal) {
+    return goal
+        .split('_')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+}
 function setUserIcon(gender) {
     const userIcon = document.getElementById('user-icon');
-    gender = gender ? gender.toUpperCase() : 'FEMININO';
     userIcon.src = `images/${gender}.png`;
 }
 
@@ -59,11 +63,11 @@ function updateProfile(user) {
             }
 
             setUserIcon(user.physicalProfile.gender);
-            document.getElementById('user-weight').textContent = user.physicalProfile.bodyWeight;
-            document.getElementById('user-height').textContent = user.physicalProfile.bodyHeight;
+            
+            let fitnessGoal = user.physicalProfile.fitnessGoal;document.getElementById('user-weight').textContent = user.physicalProfile.bodyWeight;document.getElementById('user-height').textContent = user.physicalProfile.bodyHeight;
             document.getElementById('user-gender').textContent = user.physicalProfile.gender;
             document.getElementById('user-age').textContent = user.physicalProfile.age;
-            document.getElementById('user-physical-goal').textContent = user.physicalProfile.fitnessGoal;
+            document.getElementById('user-physical-goal').textContent = formatFitnessGoal(fitnessGoal);
         } else {
             if (userCharacteristics) {
                 userCharacteristics.classList.add('hidden');
@@ -84,8 +88,8 @@ function updateProfile(user) {
             }
             const trainingDescription = document.getElementById('training-description');
             if (trainingDescription) {
-                // trainingDescription.textContent = user.training.fullTraining;
-                trainingDescription.innerHTML =`<pre> ${user.training.fullTraining} </pre> `
+
+                trainingDescription.innerHTML = `<pre> ${user.training.fullTraining} </pre> `
             }
 
         } else {
@@ -133,5 +137,5 @@ async function init() {
     console.log(user);
     updateProfile(user);
 }
-export {updateProfile, fetchUserData}
+export { updateProfile, fetchUserData }
 init();

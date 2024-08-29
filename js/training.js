@@ -17,7 +17,7 @@ document.querySelector(".btn-enviar").addEventListener("click", async () => {
         updateProfile(user);
     } catch (error) {
         
-        showError(`Erro ao gerar treino: ${error.message}`);
+        showError(`Erro ao gerar treino`);
     }
 });
 

@@ -24,12 +24,12 @@ document.querySelector('.btn-submit').addEventListener('click', async (event) =>
         let data = await getData('/user/add', 'POST', user);
 
         showMessage(`User created.`);
-        const body = { email: user.email, password: user.password };
-        data = await getData("/login", 'POST', body);
+        // const body = { email: user.email, password: user.password };
+        // data = await getData("/login", 'POST', body);
 
-        if (!data.errorMessage) {
-            localStorage.setItem("user", JSON.stringify(data));
-        }
+        // if (!data.errorMessage) {
+        //     localStorage.setItem("user", JSON.stringify(data));
+        // }
 
         // const userList = await getData('/user/list', 'GET');
         // renderUserList(userList);
